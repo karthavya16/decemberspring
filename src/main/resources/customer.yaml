@@ -1,0 +1,52 @@
+openapi: 3.0.1
+info:
+  tittle: Swagger Customer -OpenAPI 3.0
+  version: 1.0.0
+tags:
+    - name: customer
+      description: Customer Address details
+    - name: account
+      description: Customer Account details
+
+path:
+  /createCustomer:
+    post:
+      tags:
+        - customer
+      operationId: createCustomer
+      requestBody:
+        description: Create Customer with Nominee
+        content:
+          application/json:
+            schema:
+              $ref: "#/neoteric/swagger/Customer"
+      responses:
+        '200' :
+          description: success operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/neoteric/swagger/Customer"
+
+
+neoteric:
+  swagger:
+    Address:
+      type: object
+      properties:
+        city:
+          type: String
+        state:
+          type: String
+        pincode:
+          type: String
+
+    Customer:
+      type: object
+      properties:
+        firstname:
+          type: String
+        lastname:
+          type: String
+        address:
+          $ref: "#/neoteric/swagger/Customer"
